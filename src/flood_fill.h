@@ -66,10 +66,8 @@ struct span {
     int8_t dz;
 };
 
-void add_span( std::vector<span> &spans, int startX, int endX,
-               int y, int dy, int z, int dz );
-void add_span( std::vector<span> &spans, int startX, int endX,
-               int y, int dy, int z, int dz )
+static inline void add_span( std::vector<span> &spans, int startX, int endX,
+                             int y, int dy, int z, int dz )
 {
     const int clamped_z = clamp<int8_t>( z, -OVERMAP_DEPTH, OVERMAP_HEIGHT );
     spans.emplace_back( std::max( startX, 0 ), std::min( endX, MAPSIZE_X - 1 ),
